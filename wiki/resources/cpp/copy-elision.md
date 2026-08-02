@@ -8,14 +8,18 @@ This optimization allows you to write clean, readable code that returns objects 
 performance costs. Starting with C++17 some forms of copy elision are
 **guaranteed** by the language standard.
 
-::: info What This Means for You 
+::: info What This Means for You
+ 
 Copy elision is formally defined in the C++ standard under
 [**copy elision**](https://en.cppreference.com/w/cpp/language/copy_elision). When it works, objects are constructed
-directly where they're needed, skipping any intermediate copying steps entirely. 
+directly where they're needed, skipping any intermediate copying steps entirely.
+ 
 :::
 
 ::: details Historical Context
+
 Compiler developers recognized unnecessary copying in return operations as early as 1988, with the Zortech compiler introducing Return Value Optimization. The C++ standards committee officially recognized this optimization in 1997, though it remained optional. C++11's move semantics reduced copying costs, but copy elision remained superior by eliminating operations entirely rather than just making them cheaper. The breakthrough came with C++17, when certain copy elision scenarios became mandatory, giving developers guaranteed optimization in specific cases.
+
 :::
 
 ## Understanding the Different Types
@@ -696,7 +700,8 @@ allowing you to focus on expressing your intent clearly while trusting the compi
 - Return objects by value with confidence in modern C++
 - Avoid manual "optimizations" that prevent copy elision
 - Use diagnostic tools to verify that elision is working as expected
-- Leverage C++17's guaranteed elision for robust API design 
+- Leverage C++17's guaranteed elision for robust API design
+ 
 :::
 
 ## References
@@ -708,7 +713,3 @@ allowing you to focus on expressing your intent clearly while trusting the compi
 5. [MSVC Copy and Move Elision Blog Post](https://devblogs.microsoft.com/cppblog/improving-copy-and-move-elision/)
 6. [CppCon 2018: "Return Value Optimization: Harder Than It Looks" by Arthur O'Dwyer](https://www.youtube.com/watch?v=hA1WNtNyNbo)
 
----
-
-_This guide covers copy elision comprehensively for developers at all skill levels. Understanding copy elision is
-essential for writing modern C++ code that balances expressiveness with performance._
