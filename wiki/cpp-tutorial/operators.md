@@ -1,10 +1,10 @@
 # Operators
 
-In any programming language, the core standard provides simple ways to do various operations on numbers, variables, pointers, even functions with operator overloading. In C++, we are also provided with various operators that we can use to do different tasks. Usually they have the same symbols and methodology as elementary mathematics. We will discuss what are operators and how are they separated into groups by the C++ standard below.
+Operators are symbols that perform operations on numbers, variables, pointers, and even functions with operator overloading. C++ operators mostly share the same symbols and behavior you already know from elementary mathematics. Below is a breakdown of the operator groups defined by the C++ standard.
 
 ## What Are Operators?
 
-As discussed above, operators are symbols used to perform operations on variables or values. For example:
+Operators are symbols used to perform operations on variables or values. For example:
 
 ```c++
 int value = 5 + 10; // value = 15
@@ -82,7 +82,7 @@ int z = x--; // Postfix: assign x first, then decrement. x = 8, z = 9
 
 ## Assignment Operators
 
-Assignment operators are used to assign values to variables. The basic assignment operator is `=`, but C++ provides compound assignment operators that combine arithmetic operations with assignment. The assignment is done from left to right, the value of left is assigned the value on right, in some cases after an operation.
+Assignment operators are used to assign values to variables. The basic assignment operator is `=`, but C++ provides compound assignment operators that combine arithmetic operations with assignment. Assignment is evaluated right to left: the value on the right-hand side is assigned to the left-hand side, in some cases after an operation.
 
 | Operator | Description            | Example   | Equivalent To |
 | -------- | ---------------------- | --------- | ------------- |
@@ -159,7 +159,7 @@ Logical operators are used to combine multiple boolean expressions or to invert 
 |Operator|Description|Example|Result|
 |---|---|---|---|
 |`&&`|Logical AND|`true && false`|`false`|
-|`\|`|Logical OR|`true \| false`|`true`|
+|`\|\|`|Logical OR|`true \| false`|`true`|
 |`!`|Logical NOT|`!true`|`false`|
 
 ### Logical AND (`&&`)
@@ -326,19 +326,15 @@ unsigned int result = a >> 2; // 00101 in binary = 5
 
 > [!NOTE]
 > 
-> For signed integers, right shift behavior is implementation-defined. Some systems perform arithmetic shift (sign extension), while others perform logical shift (zero fill).
-
-> [!NOTE] For Advanced Programmers
-> 
-> Be aware of type promotion when using bitwise operators. Small integer types like `char` and `short` are promoted to `int` before bitwise operations, which can lead to unexpected results with the NOT operator. Also, shifting by an amount greater than or equal to the bit width of the type results in undefined behavior.
+> For signed integers, right shift is defined by the standard to perform an arithmetic shift (the sign bit is preserved). This differs from unsigned integers, where right shift is a logical shift that fills with zeros.
 
 ## Other Operators
 
-C++ provides several other operators that don't fit into the previous groups but are essential for various programming tasks. Do keep in mind this operators are useful as you learn more about C++ so feel free to use them whenever you get the chance.
+C++ provides several other operators that don't fit into the previous groups but are essential for various programming tasks. These become more useful as you write more C++, so feel free to explore them as you go.
 
-### Ternary Operator (`? :`)
+### Conditional Operator (`? :`)
 
-The ternary operator is a shorthand for `if-else` statements. It takes three operands.
+The conditional operator (informally called the "ternary operator") is a shorthand for `if-else` statements. It takes three operands.
 
 **Syntax:** `condition ? value_if_true : value_if_false`
 
@@ -347,7 +343,7 @@ int a = 10;
 int b = 20;
 int max = (a > b) ? a : b; // max = 20
 
-// This is Equivalent to:
+// This is equivalent to:
 int max;
 if (a > b) {
     max = a;
@@ -363,14 +359,17 @@ The comma operator evaluates multiple expressions from left to right and returns
 ```c++
 int a = (5, 10, 15); // a = 15
 
-int x = 1, y = 2;
+int x = 1;
+int y = 2;
 int result = (++x, ++y); // x = 2, y = 3, result = 3
 ```
 
-It's most commonly seen in `for` loops:
+It's most commonly seen in the increment section of `for` loops:
 
 ```c++
-for (int i = 0, j = 10; i < j; ++i, --j) {
+int i = 0;
+int j = 10;
+for (; i < j; ++i, --j) {
     // Multiple operations in the increment section
 }
 ```
@@ -382,10 +381,6 @@ The `sizeof` operator returns the size (in bytes) of a type or variable.
 ```c++
 int size_of_int = sizeof(int);        // Usually 4
 int size_of_double = sizeof(double);  // Usually 8
-
-int array[10];
-int array_size = sizeof(array);       // 40 (assuming int is 4 bytes)
-int array_length = sizeof(array) / sizeof(array[0]); // 10
 ```
 
 ### Member Access Operators
@@ -423,6 +418,7 @@ int result = *ptr;  // result = 42 (dereference ptr)
 > [!NOTE]
 > 
 > `&` cannot be used with a null value, meanwhile a pointer can be null. You would learn more on pointers later in the wiki.
+
 ### Scope Resolution Operator (`::`)
 
 The scope resolution operator is used to access global variables, static members, and namespace members.
@@ -463,7 +459,7 @@ int truncated2 = static_cast<int>(pi); // C++ style cast (preferred)
 
 ## Experimenting with Operators
 
-As you continue learning C++, you'll discover that operators can be used in creative and powerful ways. Some of this areas are operator overloading, combining operators, bitwise tricks, etc.
+As you continue learning C++, you'll discover that operators can be used in creative and powerful ways. Some of these areas are operator overloading, combining operators, bitwise tricks, etc.
 
 The best way to master operators is through practice. Try:
 
@@ -472,10 +468,4 @@ The best way to master operators is through practice. Try:
 - Implementing algorithms that leverage bitwise operations
 - Creating your own classes with overloaded operators
 
-Remember that readable code is often more important than clever tricks. Use operators in ways that make your intent clear to other programmers (or yourself in the future).
-
-> [!NOTE] For Advanced Programmers
-> 
-> Consider exploring topics like expression templates, SFINAE with operators, the spaceship operator (`<=>`) introduced in C++20, and how compilers optimize operator usage. The `constexpr` keyword can also be applied to operator overloads for compile-time evaluation. Understanding move semantics and perfect forwarding becomes crucial when overloading assignment operators and implementing efficient operator overloads.
-
-
+We highly recommend writing code that is clear and readable to others (and your future self) and avoid clever tricks that can make code harder to read.
