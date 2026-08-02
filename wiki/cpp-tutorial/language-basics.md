@@ -80,8 +80,8 @@ int foo = 0;   // declaration statement
 foo = foo + 2; // expression statement
 ```
 
-In the above snippet, the variable `foo` is initialized with a value of `0`, then evaluates the expression `foo + 2`
-before assigning the value back to the variable foo.
+The above snippet creates `foo` with an initial value of `0`, then evaluates `foo + 2` before assigning the value back
+to the variable `foo`.
 
 ## Identifiers
 
@@ -304,7 +304,7 @@ Let's bring this knowledge together into practice and write a simple program tha
 
 The equation to convert the two is very simple: $C = (F - 32) / (9 / 5)$.
 
-Because temperature is not a integer value, but a real number, we will use `double` to store our variables.
+Because temperature is not an integer value, but a real number, we will use `double` to store our variables.
 
 ```cpp
 int main() {

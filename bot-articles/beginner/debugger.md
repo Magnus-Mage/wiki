@@ -14,3 +14,5 @@ Resources:
 - [Getting started with debugging in vscode on windows](<https://code.visualstudio.com/docs/cpp/config-mingw#_debug-helloworldcpp>)
 - [Getting started with debugging in vscode on linux](<https://code.visualstudio.com/docs/cpp/config-linux#_debug-helloworldcpp>)
 - If your IDE isn't listed here, you can find a guide for your IDE online
+
+**See:** [Debugging Your Program](https://tccpp.wiki/cpp-tutorial/debugging) :tccpp:
